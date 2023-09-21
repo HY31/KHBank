@@ -27,6 +27,8 @@ public class LogInManager : MonoBehaviour
         string username = signUpIDInput.text;    // 입력된 사용자명
         string password = signUpPasswordInput.text;    // 입력된 비밀번호
 
+        // TODO - 아무것도 입력 안한 상태로 로그인이 됨
+        
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
             CoutionTxt.text = "주의\nID와 비밀번호를\n입력해주세요.";
@@ -62,6 +64,13 @@ public class LogInManager : MonoBehaviour
     {
         string id = PlayerPrefs.GetString("ID");
         string password = PlayerPrefs.GetString("Password");
+
+        if (string.IsNullOrEmpty(logInIDInput.text) || string.IsNullOrEmpty(logInPasswordInput.text))
+        {
+            CoutionTxt.text = "주의\nID와 비밀번호를\n입력해주세요.";
+            startSceneUIController.OpenCautionWindow();
+            return;
+        }
 
         if (id == logInIDInput.text && password == logInPasswordInput.text)
         {
