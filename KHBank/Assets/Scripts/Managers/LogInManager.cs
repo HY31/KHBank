@@ -1,41 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LogInManager : MonoBehaviour
 {
-    [SerializeField] InputField usernameInput;   // 사용자명 입력 필드
-    [SerializeField] InputField passwordInput;   // 비밀번호 입력 필드
+    [SerializeField] TMP_InputField signUpIDInput;   // 사용자명 입력 필드
+    [SerializeField] TMP_InputField signUpPasswordInput;   // 비밀번호 입력 필드
 
-    bool IsConfirmed = false;
+    [SerializeField] TMP_InputField logInIDInput;   // 사용자명 입력 필드
+    [SerializeField] TMP_InputField logInPasswordInput;   // 비밀번호 입력 필드
+
+    [SerializeField] TMP_Text CoutionTxt;
+
+    [SerializeField] StartSceneUIController startSceneUIController;
+
+    public bool IsConfirmed = false;
 
 
     public void RegisterUser()
     {
-        string username = usernameInput.text;    // 입력된 사용자명
-        string password = passwordInput.text;    // 입력된 비밀번호
+        string username = signUpIDInput.text;    // 입력된 사용자명
+        string password = signUpPasswordInput.text;    // 입력된 비밀번호
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
-            Debug.LogWarning("사용자명과 비밀번호는 비어있을 수 없습니다.");
+            CoutionTxt.text = "주의\nID와 비밀번호를\n입력해주세요.";
+            startSceneUIController.OpenCautionWindow();
             return;
         }
 
-        // 사용자가 이미 존재하는지 확인합니다.
-        if (PlayerPrefs.HasKey(username))
+        // 유저 중복 여부
+        if (PlayerPrefs.GetString("ID") == username)
         {
-            Debug.LogWarning("이미 사용자가 존재합니다.");
+            CoutionTxt.text = "주의\n\n중복된 ID입니다.";
+            startSceneUIController.OpenCautionWindow();
             return;
         }
 
-        // PlayerPrefs를 사용하여 사용자 데이터를 저장합니다.
+        // PlayerPrefs를 사용하여 유저 데이터 저장
         PlayerPrefs.SetString("ID", username);
         PlayerPrefs.SetString("Password", password);
         PlayerPrefs.Save();
 
-        Debug.Log("사용자 등록 완료: " + username);
+        CoutionTxt.text = "회원가입 완료!\nKH은행에 오신 걸\n환영합니다!";
+        startSceneUIController.OpenCautionWindow();
+        startSceneUIController.CloseSignUpWindow();
     }
 
     public void LogInUser()
@@ -43,13 +55,15 @@ public class LogInManager : MonoBehaviour
         string id = PlayerPrefs.GetString("ID");
         string password = PlayerPrefs.GetString("Password");
 
-        if (id == usernameInput.text && password == passwordInput.text)
+        if (id == logInIDInput.text && password == logInPasswordInput.text)
         {
             SceneManager.LoadScene("MainScene");
         }
         else
         {
-            Debug.Log("아이디와 비번 확인");
+            CoutionTxt.text = "주의\nID와 비밀번호를\n확인해주세요.";
+            startSceneUIController.OpenCautionWindow();
+            return;
         }
     }
 

@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 266562520}
   - component: {fileID: 266562519}
   m_Layer: 5
-  m_Name: PlayerName
+  m_Name: PlayerNameTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2716,7 +2716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HK BANK
+  m_text: KH BANK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be3a1ea9b6b96f14aaca70da0e5c08d7, type: 2}
   m_sharedMaterial: {fileID: 1100565628995851243, guid: be3a1ea9b6b96f14aaca70da0e5c08d7, type: 2}
@@ -3250,6 +3250,7 @@ MonoBehaviour:
   coutionWindow: {fileID: 1350162291}
   balance: {fileID: 781701503}
   cashOnHandTxt: {fileID: 1564917981}
+  welcome: {fileID: 266562519}
 --- !u!4 &1162083238
 Transform:
   m_ObjectHideFlags: 0
