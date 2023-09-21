@@ -7,17 +7,19 @@ using UnityEngine.UI;
 
 public class LogInManager : MonoBehaviour
 {
-    [SerializeField] TMP_InputField signUpIDInput;   // 사용자명 입력 필드
-    [SerializeField] TMP_InputField signUpPasswordInput;   // 비밀번호 입력 필드
+    [SerializeField] TMP_InputField signUpIDInput;   // 회원가입 ID 입력 필드
+    [SerializeField] TMP_InputField signUpPasswordInput;   // 회원가입 비밀번호 입력 필드
+    [SerializeField] TMP_InputField confirmPassword;  // 회원가입 시 비밀번호 확인
 
-    [SerializeField] TMP_InputField logInIDInput;   // 사용자명 입력 필드
-    [SerializeField] TMP_InputField logInPasswordInput;   // 비밀번호 입력 필드
+    [SerializeField] TMP_InputField logInIDInput;   // 로그인할 때 ID 입력 필드
+    [SerializeField] TMP_InputField logInPasswordInput;   // 로그인할 때 비밀번호 입력 필드
+    
 
-    [SerializeField] TMP_Text CoutionTxt;
+    [SerializeField] TMP_Text CoutionTxt; // 주의 문구를 계속 바꾸기 위해
 
     [SerializeField] StartSceneUIController startSceneUIController;
 
-    public bool IsConfirmed = false;
+    public bool IsConfirmed = false;  // 비밀번호 확인 했는지 여부
 
 
     public void RegisterUser()
@@ -40,6 +42,12 @@ public class LogInManager : MonoBehaviour
             return;
         }
 
+        if(!IsConfirmed)
+        {
+            CoutionTxt.text = "주의\n비밀번호를\n확인해주십시오.";
+            startSceneUIController.OpenCautionWindow();
+            return;
+        }
         // PlayerPrefs를 사용하여 유저 데이터 저장
         PlayerPrefs.SetString("ID", username);
         PlayerPrefs.SetString("Password", password);
@@ -62,6 +70,23 @@ public class LogInManager : MonoBehaviour
         else
         {
             CoutionTxt.text = "주의\nID와 비밀번호를\n확인해주세요.";
+            startSceneUIController.OpenCautionWindow();
+            return;
+        }
+    }
+
+    public void CheckInputPassword()
+    {
+        if(signUpPasswordInput.text == confirmPassword.text)
+        {
+            IsConfirmed = true;
+            CoutionTxt.text = "\n비밀번호가\n일치합니다.";
+            startSceneUIController.OpenCautionWindow();
+            return;
+        }
+        else
+        {
+            CoutionTxt.text = "\n비밀번호가\n일치하지 않습니다.";
             startSceneUIController.OpenCautionWindow();
             return;
         }

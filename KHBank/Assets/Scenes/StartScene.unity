@@ -335,7 +335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "ID\uD655\uC778\uD574\uB77C"
+  m_text: "\n\uBE44\uBC00\uBC88\uD638\uAC00\n\uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be3a1ea9b6b96f14aaca70da0e5c08d7, type: 2}
   m_sharedMaterial: {fileID: 1100565628995851243, guid: be3a1ea9b6b96f14aaca70da0e5c08d7, type: 2}
@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 70
 --- !u!222 &694568849
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3049,7 +3049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1021999386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3111,7 +3111,7 @@ Transform:
   m_GameObject: {fileID: 1021999385}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -0.36, z: 0}
+  m_LocalPosition: {x: -0.02, y: -0.32, z: 0}
   m_LocalScale: {x: 5.994267, y: 4.823011, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4762,7 +4762,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1499344717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1724836164}
+        m_TargetAssemblyTypeName: LogInManager, Assembly-CSharp
+        m_MethodName: CheckInputPassword
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1499344717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5412,6 +5424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signUpIDInput: {fileID: 921939379}
   signUpPasswordInput: {fileID: 1379746468}
+  confirmPassword: {fileID: 1755889002}
   logInIDInput: {fileID: 986029219}
   logInPasswordInput: {fileID: 761908859}
   CoutionTxt: {fileID: 96941959}
