@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 {
     MoneyManager _moneyManager;
     [SerializeField] GameObject depositWindow;
+    [SerializeField] GameObject withdrawWindow;
     [SerializeField] GameObject coutionWindow;
     [SerializeField] TMP_Text balance;
     [SerializeField] TMP_Text cashOnHandTxt;
@@ -23,11 +24,20 @@ public class UIController : MonoBehaviour
     {
         depositWindow.SetActive(true);
     }
-
     public void CloseDepositWindow()
     {
         depositWindow.SetActive(false);
     }
+
+    public void OpenWithdrawWindow()
+    {
+        withdrawWindow.SetActive(true);
+    }
+    public void CloseWithdrawWindow()
+    {
+        withdrawWindow.SetActive(false);
+    }
+
 
     void UpdateCashOnHandTxt()
     {
