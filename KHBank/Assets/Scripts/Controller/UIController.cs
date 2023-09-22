@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +13,8 @@ public class UIController : MonoBehaviour
     [SerializeField] TMP_Text cashOnHandTxt;
     [SerializeField] TMP_Text welcome;
 
+    [SerializeField] TMP_Text time;
+
     private void Start()  // Awake로 하면 Awake끼리 순서가 정해져있지 않아서 값이 제대로 들어가지 않는다!
     {
         _moneyManager = MoneyManager.instance;
@@ -23,6 +24,7 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         UpdateCashOnHandTxt();
+        time.text = DateTime.Now.ToString("yyyy-M-dd | tt HH:mm");
     }
     public void OpenDepositWindow()
     {
